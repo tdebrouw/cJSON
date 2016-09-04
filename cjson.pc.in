@@ -1,0 +1,9 @@
+prefix=@CMAKE_INSTALL_PREFIX@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib/
+includedir=${prefix}/include/cJSON
+
+Name: cjson
+Description: ANSI-C compliant JSON parser
+Libs: -L${libdir} -lcJSON -lcJSON_utils
+Cflags: -I${includedir}

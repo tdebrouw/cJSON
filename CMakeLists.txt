@@ -40,6 +40,14 @@ install (TARGETS ${PROJ_CJSON_UTILS} DESTINATION lib${LIB_SUFFIX})
 install (TARGETS ${PROJ_CJSON_UTILS}.shared DESTINATION lib${LIB_SUFFIX})
 install (FILES cJSON_Utils.h DESTINATION include/cJSON)
 
+# prepare & install .pc file
+SET(prefix "\${prefix}")
+SET(exec_prefix "\${exec_prefix}")
+SET(libdir "\${libdir}")
+SET(includedir "\${includedir}")
+CONFIGURE_FILE(cjson.pc.in cjson.pc)
+INSTALL (FILES "${CMAKE_CURRENT_BINARY_DIR}/cjson.pc" DESTINATION "lib/pkgconfig")
+
 option(ENABLE_CJSON_TEST "Enable building cJSON test" OFF)
 if(ENABLE_CJSON_TEST)
 	set(TEST_CJSON cJSON_test)
