@@ -48,6 +48,14 @@ SET(includedir "\${includedir}")
 CONFIGURE_FILE(cjson.pc.in cjson.pc)
 INSTALL (FILES "${CMAKE_CURRENT_BINARY_DIR}/cjson.pc" DESTINATION "lib/pkgconfig")
 
+# install cmake file
+CONFIGURE_FILE(CJSONConfig.cmake.in
+    CJSONConfig.cmake
+    @ONLY)
+INSTALL(FILES "${CMAKE_CURRENT_BINARY_DIR}/CJSONConfig.cmake"
+    DESTINATION "lib/cmake/cjson"
+    COMPONENT dev)
+
 option(ENABLE_CJSON_TEST "Enable building cJSON test" OFF)
 if(ENABLE_CJSON_TEST)
 	set(TEST_CJSON cJSON_test)
